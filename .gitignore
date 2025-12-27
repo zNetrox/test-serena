@@ -1,0 +1,22 @@
+# --- RACINE ---
+.env
+docker-compose.override.yml
+postgres_data/ 
+
+# --- FRONTEND ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.local
+frontend/package-lock.json
+
+# --- BACKEND ---
+# pour les API
+backend/vendor/
+
+# --- LOGS & OS ---
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  /* ---- debug responsive ----   border: 1px solid red !important; */ 
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #252525;
+  --white: #FFFBF2;
+  --blue: #91A8D2;
+  --pink: #F6CAC9;
+  --red: #BF443D;
+  --gray: #B1B1B1;
+  --bezier: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Wix';
+  background: var(--black); 
+  color: var(--white);
+}
+
+#root {
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
