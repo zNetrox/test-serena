@@ -4,11 +4,28 @@ class DAL {
     private PDO $db;
 
     private function __construct() {
+        // recupere les login depuis le .env
+        
+        $host = getenv('DB_HOST');
+        $port = getenv('DB_PORT');
+        $dbname = getenv('DB_NAME');
+        $user = getenv('DB_USER');
+        $password = getenv('DB_PASSWORD');
+
+        $dataSourceName = "pgsql:host=$host;port=$port;dbname=$dbname";
+        $this->db = new PDO($dataSourceName, $user, $password, [            
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // pour avoir des tableaux propres a l'affichage
+        ]);
+        
+
+        /*
         $dataSourceName = 'pgsql:host=db;port=5432;dbname=ma_base';
         $this->db = new PDO($dataSourceName, "admin", "password123", [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // pour avoir des tableaux propres a l'affichage
-        ]);
+        ]);*/
+        
     }
+
 
     public static function get(): DAL {
         if (is_null(self::$instance)) {

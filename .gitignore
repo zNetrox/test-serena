@@ -1,5 +1,5 @@
 # --- RACINE ---
-.env
+
 docker-compose.override.yml
 postgres_data/ 
 
@@ -9,10 +9,13 @@ frontend/dist/
 frontend/dist-ssr/
 frontend/.local
 frontend/package-lock.json
+.env.development
+.env.production
 
 # --- BACKEND ---
 # pour les API
 backend/vendor/
+.env
 
 # --- LOGS & OS ---
 *.log

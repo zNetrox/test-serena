@@ -1,0 +1,44 @@
+/* Mobile */
+nav {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+}
+
+nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    border-top: .2rem solid var(--gray);
+    padding: 1rem 0 .7rem 0;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+nav a.active {
+    border-top: .2rem solid var(--blue);
+    color: var(--blue);
+}
+
+nav a.active svg {
+    fill: var(--blue);
+}
+
+nav svg {
+    width: 3.5rem;
+    fill: var(--gray);
+}
+
+
+/* Tablettes (écrans > 768px) */
+@media (min-width: 768px) {
+
+}
+
+/* Desktops (écrans > 1024px) */
+@media (min-width: 1024px) {
+
+}

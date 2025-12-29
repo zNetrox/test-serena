@@ -4,9 +4,11 @@ function Accueil() {
   const [medicaments, setMedicaments] = useState([])
   const [error, setError] = useState(null)
 
-  // le useEffect sert ici a n'appeler qu'une seul fois ce code au debut
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  // le useEffect sert ici est appeler qu'une seul fois ce code au debut
   useEffect(() => {
-    fetch('http://localhost:8080/?route=medicament/list') // A changer pour le serveur
+    fetch(`${apiUrl}/?route=medicament/list`)
       .then((response) => {
         return response.json() // recupere les données
       })
