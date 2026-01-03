@@ -1,9 +1,10 @@
 /* Mobile */
-nav {
+nav > div {
     width: 100%;
     position: fixed;
     display: flex;
     bottom: 0;
+    z-index: 10;
 }
 
 nav a {
@@ -35,7 +36,29 @@ nav svg {
 
 /* Tablettes (écrans > 768px) */
 @media (min-width: 768px) {
+    nav {
+        position: relative;
+        border-right: 1px solid var(--gray);
+    }
 
+    nav > div {
+        position: sticky;
+        top: 10rem;
+        width: 20rem;
+        flex-direction: column;
+        gap: 3rem;
+        padding-left: 1.5rem;
+    }
+
+    nav a {
+        flex-direction: row;
+        flex-grow: 0; 
+        padding: 0;
+    }
+
+    nav :is(a, a.active) {
+        border-top: 0;
+    }
 }
 
 /* Desktops (écrans > 1024px) */

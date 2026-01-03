@@ -1,56 +1,86 @@
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import './App.css'
 
-import Accueil from './pages/Accueil';
+import Dashboard from './pages/Dashboard';
+import MyDay from './pages/MyDay'
+import LastVisitReport from './pages/LastVisitReport'
 import Agenda from './pages/Agenda'
-import Suivi from './pages/Suivi'
-import Document from './pages/Document'
+import VisitReport from './pages/VisitReport'
+import Medecine from './pages/Medecine'
+import FileExplorer from './pages/FileExplorer'
+import Assistance from './pages/Assistance'
 
-import SousPartie1 from './pages/SousPartie1'
-import SousPartie2 from './pages/SousPartie2'
-import SousPartie3 from './pages/SousPartie3'
-
-import Nav from './components/nav/Nav';
-import Header from './components/header/Header';
+import Layout from './Layout'
 
 function App() {
   const location = useLocation();
 
   return (
     <>
-      <Nav />
-
+      {/* REDIRECTION / */}
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={
-          <>
-          <Header submenu={
-            [
-              {label: "sous menu 1", path: "sous_partie_1"},
-              {label: "sous menu 2", path: "sous_partie_2"},
-              {label: "sous menu 3", path: "sous_partie_3"}
-            ]} />
-          </>
-        }>
-          <Route path="sous_partie_1" element={<Accueil />}/> 
-          <Route path="sous_partie_2" element={<SousPartie2 />}/>
-          <Route path="sous_partie_3" element={<SousPartie3 />}/>
+        <Route path="">
+          {/* quand on est sur / dans l'url on redirige vers home/dashboard */}
+          <Route index element={<Navigate to="home/dashboard" replace />} />
         </Route>
 
-        <Route path="agenda" element={
-          <Agenda />
-        } />
+        {/* ACCUEIL */}
+        <Route path="home" element={
+          <Layout submenu={[
+              { label: "Tableau de bord", path: "home/dashboard" },
+              { label: "Ma journée", path: "home/my_day" },
+              { label: "Dernier rapport", path: "home/last_visit_report" },
+            ]}
+          />
+        }>
+          {/* quand on est sur /home dans l'url on redirige vers dashboard */}
+          <Route index element={<Navigate to="dashboard" replace />} />
+          
+          {/* routes pour les sous partie avec leurs contenu */}
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="my_day" element={<MyDay />} />
+          <Route path="last_visit_report" element={<LastVisitReport  />} />
+        </Route>
 
-        <Route path="suivi" element={
-          <Suivi />
-        } />
+        {/* AGENDA */}
+        <Route path="agenda" element={<Layout submenu={[]} />}>
+          <Route index element={<Agenda />} />
+        </Route>
 
-        <Route path="document" element={
-          <Document />
-        } />
+        {/* SUIVI */}
+        <Route path="suivi" element= {
+          <Layout submenu={[
+              { label: "Rapport de visite", path: "suivi/visit_report" },
+              { label: "Médicament", path: "suivi/medicine" },
+            ]}/>
+          }>
+          
+          {/* quand on est sur /suivi dans l'url on redirige vers visit_report */}
+          <Route index element={<Navigate to="visit_report" replace />}/>
 
+          {/* routes pour les sous partie avec leurs contenu */}
+          <Route path="visit_report" element={<VisitReport />} />
+          <Route path="medicine" element={<Medecine />} />
+        </Route>
+
+        {/* DOCUMENT */}
+        <Route path="document" element= {
+          <Layout submenu={[
+              { label: "Explorateur", path: "document/explorateur" },
+              { label: "Aides", path: "document/aides" },
+            ]}/>
+          }>
+          
+          {/* quand on est sur /suivi dans l'url on redirige vers visit_report */}
+          <Route index element={<Navigate to="explorateur" replace />}/>
+
+          {/* routes pour les sous partie avec leurs contenu */}
+          <Route path="explorateur" element={<FileExplorer />} />
+          <Route path="aides" element={<Assistance />} />
+        </Route>
       </Routes>
     </>
-  );
+  )
 }
 
 export default App

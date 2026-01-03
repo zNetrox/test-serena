@@ -1,20 +1,22 @@
 <?php
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '*';
 header("Access-Control-Allow-Origin: $origin");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-// DAL
 require_once('model/dal.class.php');
 
 $route = $_GET['route'] ?? '';
 
 const _ROUTES = array(
-  ''                => 'medicament',
-  'medicament/list' => 'medicament',
+  'medicament/list' => 'viewMedicament',
+  'medicament/add' => 'addMedicament',
+  'medicament/delete' => 'deleteMedicament'
 );
 
 if (!array_key_exists($route, _ROUTES)) {

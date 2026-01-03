@@ -5,6 +5,7 @@ class DAL {
 
     private function __construct() {
         // recupere les login depuis le .env
+        
         $host = getenv('DB_HOST');
         $port = getenv('DB_PORT');
         $dbname = getenv('DB_NAME');

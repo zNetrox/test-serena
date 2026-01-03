@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 
-function Suivi() {
+function MyDay() {
+  
   return (
-    <div className="suivi">
-      
+    <div className="my_day">
+
     </div>
   )
 }
 
-export default Suivi
+export default MyDay
