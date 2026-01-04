@@ -1,10 +1,9 @@
 <?php
-require_once('model/dal.class.php');
 require_once('model/medicamentDAO.class.php');
 
 try {
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
+    $json = file_get_contents('php://input'); // lit le body du fetch
+    $data = json_decode($json, true); // transforme '$json' en tableau
 
     if (empty($data['name']) || !isset($data['stock'])) {
         throw new Exception("Données manquantes (name ou stock).");
@@ -13,12 +12,11 @@ try {
     $model = new MedicamentDAO();
     $success = $model->addMedecine($data['name'], $data['stock']);
 
+    // renvoie a la vue des informations
     echo json_encode([
         "success" => $success,
-        "message" => "Médicament ajouté avec succès"
     ]);
 
 } catch (Exception $e) {
-    http_response_code(400);
     echo json_encode(["error" => $e->getMessage()]);
 }

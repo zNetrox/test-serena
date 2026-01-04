@@ -1,5 +1,4 @@
 <?php
-require_once('model/dal.class.php');
 require_once('model/medicamentDAO.class.php');
 
 try {
